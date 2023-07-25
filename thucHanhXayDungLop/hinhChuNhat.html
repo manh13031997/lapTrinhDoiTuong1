@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mô tả hình chữ nhật</title>
+</head>
+<body>
+<canvas id="hinhCN" height="900" width="800" style="border:1px solid red"></canvas>
+<script>
+    class HinhCN {
+        constructor(chieuDai, chieuRong) {
+            this.chieuDai = chieuDai
+            this.chieuRong = chieuRong
+        }
+        tongHinhCN() {
+            let ctx = document.getElementById("hinhCN").getContext('2d');
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0,0,this.chieuDai,this.chieuRong);
+        }
+    }
+    const hcn = new HinhCN(150 ,75)
+
+    hcn.tongHinhCN()
+
+</script>
+</body>
+</html>
