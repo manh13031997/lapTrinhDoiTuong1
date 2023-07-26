@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mobile</title>
+</head>
+<body>
+<script>
+    class DienThoai {
+        battery;
+        message;
+        inbox;
+        messageSent;
+        status;
+
+        constructor(battery, message, inbox, messageSent, status) {
+            this.battery = battery;
+            this.message = message;
+            this.inbox = inbox;
+            this.messageSent = messageSent;
+            this.status = status
+        }
+
+        sendMessage(messs) {
+            if (this.status === 1) {
+                this.battery--
+                this.messageSent.push(messs)
+            }
+        }
+
+        receiveMesage(mess) {
+            if (this.status === 1) {
+                this.battery--
+                this.inbox.push(mess);
+            }
+
+
+        }
+
+        writeMessage(a) {
+            if (this.status === 1) {
+                this.battery--
+                this.message = a
+            }
+        }
+
+        tonggleStatus() {
+            if (this.status === 0) {
+                this.status = 1
+            } else {
+                this.status = 0
+            }
+        }
+
+        upBattery() {
+            this.battery = 100
+        }
+    }
+
+    function displayStatus(status) {
+        if (status === 1) {
+            return 'on'
+        } else {
+            return 'off'
+        }
+    }
+    function displayBattery(battery,status) {
+        if (status === 0){
+            return ''
+        } else if(battery === 0) {
+            return ''
+        } else {
+            return battery
+        }
+    }
+
+    let mobile1 = new DienThoai(70, '', [], [], 1);
+    let mobile2 = new DienThoai(80, '', [], [], 1);
+
+    // mobile1.tonggleStatus();
+    document.write(displayStatus(mobile1.status))
+    // mobile1.upBattery()
+    document.writeln(displayBattery(mobile1.battery,mobile1.status))
+
+    mobile1.writeMessage('viết tin nhắn')
+    //mình viết tin
+    mobile1.receiveMesage('người khác gửi về')
+
+    // người khác gửi
+    function sendMessToMobile(mess, mobile2) {
+        mobile1.sendMessage(mess);
+        mobile2.receiveMesage(mess);
+        mobile1.message = '';
+    }
+
+    document.writeln(mobile1.message +'<br>')
+    sendMessToMobile(mobile1.message, mobile2)
+    document.writeln(mobile1.messageSent+'<br>')
+    document.writeln(mobile2.inbox+'<br>')
+    document.writeln(mobile1.inbox+'<br>')
+    document.writeln(mobile1.messageSent)
+    document.writeln(displayBattery(mobile1.battery,mobile1.status))
+</script>
+</body>
+</html>

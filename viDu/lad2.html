@@ -5,6 +5,23 @@
     <title>thử hình chữ nhật</title>
 </head>
 <body>
+<canvas id="hcn" height="500" width="900" style="border:1px solid rebeccapurple"></canvas>
+<script>
+    class hinhcn {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
 
+        tonghcn() {
+          let  a = document.getElementById("hcn").getContext("2d")
+            a.fillStyle = "blue"
+            a.fillRect(0, 0, this.x, this.y);
+        }
+    }
+
+    const thcn = new hinhcn(175, 75)
+    thcn.tonghcn()
+</script>
 </body>
 </html>
